@@ -3,6 +3,7 @@ import torch
 from transformers import AutoModelForQuestionAnswering, AutoTokenizer
 
 
+@st.cache
 st.title("🤖💬 Extractive Question Answering Bot")
 st.text("Hello! It's nice to meet you.\nPlease provide me your text(paragraphs, sentences,..) and your question!")
 
