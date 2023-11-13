@@ -3,15 +3,17 @@ import torch
 from transformers import AutoModelForQuestionAnswering, AutoTokenizer
 
 
-@st.cache
 st.title("🤖💬 Extractive Question Answering Bot")
 st.text("Hello! It's nice to meet you.\nPlease provide me your text(paragraphs, sentences,..) and your question!")
 
-
-with st.spinner("Loading Model Into memory....."):
+def load_model():
     device = "cuda" if torch.cuda.is_available() else "cpu"
     model = AutoModelForQuestionAnswering.from_pretrained("huynguyen61098/Bert-Base-Cased-Squad-Extractive-QA").to(
         device)
+    return model
+    
+with st.spinner("Loading Model Into memory....."):
+    model = load_model()
 
 context = st.text_input("Enter your context here..")
 print(f"Context: {context}")
